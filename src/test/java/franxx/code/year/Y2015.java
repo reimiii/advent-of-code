@@ -73,12 +73,17 @@ public class Y2015 {
             int w = dimensions[1];
             int h = dimensions[2];
 
-            int ribbon = l + l + w + w;
-            int wrap = l * w * h;
-            int total = ribbon + wrap;
-            sumTwo += total;
+            int minLW = 2 * (l + w);
+            int minWH = 2 * (w + h);
+            int minHL = 2 * (h + l);
 
-            System.out.println("ribbon: " + ribbon);
+            int min = Math.min(Math.min(minLW, minWH), minHL);
+            System.out.println("Shortest distance: " + min);
+
+            int wrap = l * w * h;
+            int total = min + wrap;
+
+            System.out.println("min: " + min);
             System.out.println("wrap: " + wrap);
             System.out.println("total: " + total);
             final int number = 2;
@@ -100,6 +105,7 @@ public class Y2015 {
             int square = (number * lw) + (number * wh) + (number * hl);
 
             sum += (square + lowest);
+            sumTwo += total;
             System.out.println("low: " + lowest);
 
             System.out.println("=======================");
